@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+    <meta name="description" content="This is a blog page ran by a 13 year old">
+  
+
+  
+
+  
+    <meta name="author" content="Tanuj Padaliya">
+  
+
+  
+
+  
+
+  <title>Simple Pendulum | Tanuj&#39;s Blog</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.3/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/styles/monokai.css">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+<body>
+  <div class="root-container">
+    <!-- header container -->
+<header class="header-container post">
+  
+  <div
+    class="post-image"
+    style="background-image: url(https://i.pinimg.com/474x/1c/4f/ac/1c4facad627b098885aec6266b8c6c0e.jpg) "
+  ></div>
+   <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          Tanuj&#39;s Blog
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">Home</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">Links</a></li>
+        
+          <li class="navbar-list-item"><a href="https://callmetan7.github.io/personal-portfolio/">About</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+           
+  <div class="header-content">
+    <div class="post-text layout-block">
+      <div class="layout-margin">
+        <h1 class="title-wrap">Simple Pendulum</h1>
+        <h2 class="title-sub-wrap">
+          <strong>Tanuj Padaliya</strong>
+          <span> | </span>
+          <time  class="article-date" datetime="2022-01-06T16:00:00.000Z" itemprop="datePublished">2022-01-07</time>
+        </h2>
+        <ul class="wrap-list dark">
+  
+</ul> <ul class="wrap-list dark">
+  
+</ul>
+      </div>
+    </div>
+  </div>
+    
+</header>
+
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="Simple-Pendulum"><a href="#Simple-Pendulum" class="headerlink" title="Simple Pendulum"></a>Simple Pendulum</h1><p>A pendulum is a ball swinging from a string. It is often used in physics classes to demonstrate common physics formulas. </p>
+<p><img src="http://labman.phys.utk.edu/phys221core/modules/m11/images/ap.gif" alt="http://labman.phys.utk.edu/phys221core/modules/m11/images/ap.gif"></p>
+<p>Today we’re just going to simulate the motion of a pendulum. We’re going to be starting off with polar coordinates since it makes it easier to deal with angles. To convert polar coordinates to cartesian coordinates we can use  the following formula. </p>
+<p>$x = r * \cos(\theta)$</p>
+<p>$y = r*\cos(\theta)$</p>
+<hr>
+<h2 id="Setting-up-our-environment"><a href="#Setting-up-our-environment" class="headerlink" title="Setting up our environment"></a>Setting up our environment</h2><p>In this demo we’ll be using a graphics library called p5.js. The first thing we need to do setup our p5.js environment. </p>
+<p>To do that create a HTML file and add the following script tag.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha512-w1Bktzax55ZbjW5Mqjz8+mKz4KqRjEUU35Dpq/ath29yskKqIGwNIHiFNp03m/OiJWDXvdQ1/g6aV+l4PeVO7Q==&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span> <span class="hljs-attr">referrerpolicy</span>=<span class="hljs-string">&quot;no-referrer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>After this create another script tag with the following code inside it</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// Creates a empty window</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>&#123;<br>  createCanvas(windowWidth, windowHeight);<br>&#125;<br><span class="hljs-comment">// This function is called every frame and is where most of the drawing is going to take place</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>)</span>&#123;<br>  background(<span class="hljs-number">51</span>);<br>  translate(width / <span class="hljs-number">2</span>, height / <span class="hljs-number">2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Open the HTML file and you’ll a empty gray looking window.</p>
+<hr>
+<h2 id="The-code"><a href="#The-code" class="headerlink" title="The code"></a>The code</h2><p>Since this is going to be a object oriented version since if we want to create multiple pendulums that bounce off of each other we could. So we’ll start by creating a the rope of the pendulum. To draw a line in p5 use the following snippet.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsx">line(x, y, x2, y2);<br></code></pre></td></tr></table></figure>
+
+<p>We will start of by making a class with a <code>calculate()</code> method. This calculate method will recalculate our current <code>x, y, x2, y2</code> based on the angle. Now that we know this we can have a class that looks something like this.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">calculate</span>(<span class="hljs-params">currentAngle</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = r * <span class="hljs-built_in">Math</span>.cos(angle);<br>        <span class="hljs-built_in">this</span>.y = r * <span class="hljs-built_in">Math</span>.sin(angle);<br>        <span class="hljs-built_in">this</span>.x2 = r * <span class="hljs-built_in">this</span>.x + <span class="hljs-built_in">this</span>.x;<br>        <span class="hljs-built_in">this</span>.y2 = r * <span class="hljs-built_in">this</span>.y + <span class="hljs-built_in">this</span>.y;<br>        line(<span class="hljs-built_in">this</span>.x, <span class="hljs-built_in">this</span>.y, <span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2);<br>        ellipse(<span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2, <span class="hljs-number">20</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Now lets create a new line and calculate the new angles in the draw function. Once your done you should get something like this</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">let</span> angle = <span class="hljs-number">0</span>; <span class="hljs-comment">// You can have it any other integer value</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">calculate</span>(<span class="hljs-params">currentAngle</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = r * <span class="hljs-built_in">Math</span>.cos(angle);<br>        <span class="hljs-built_in">this</span>.y = r * <span class="hljs-built_in">Math</span>.sin(angle);<br>        <span class="hljs-built_in">this</span>.x2 = r * <span class="hljs-built_in">this</span>.x + <span class="hljs-built_in">this</span>.x;<br>        <span class="hljs-built_in">this</span>.y2 = r * <span class="hljs-built_in">this</span>.y + <span class="hljs-built_in">this</span>.y;<br>        line(<span class="hljs-built_in">this</span>.x, <span class="hljs-built_in">this</span>.y, <span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2);<br>        ellipse(<span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2, <span class="hljs-number">20</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> pend = <span class="hljs-keyword">new</span> Line;<br><span class="hljs-comment">// Creates a empty window</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>&#123;<br>  createCanvas(windowWidth, windowHeight);<br>&#125;<br><span class="hljs-comment">// This function is called every frame and is where most of the drawing is going to take place</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>)</span>&#123;<br>  background(<span class="hljs-number">51</span>);<br>  translate(width / <span class="hljs-number">2</span>, height / <span class="hljs-number">2</span>);<br>  pend.calculate(angle);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Once done you should get a line with a ball at the end of it. Now to make the ball move or rotate. For a simple rotation we can simply increment angle by $0.01$ in the draw function.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsx">angle += <span class="hljs-number">0.01</span>;<br></code></pre></td></tr></table></figure>
+
+<p>Now you should get simple rotating line. To alternate we will use a approach with a boolean variable called alternate. </p>
+<p>We will have a method in the line class that will change the alternate variable to the opposite of what it is currently. We will call this method in the everytime y2 hits hits 0 or it hits -7. Depending on alternate we will either add 0.01 to angle or subtract 0.01 to angle. Alright lets code it up.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> r = <span class="hljs-number">15</span>;<br><span class="hljs-keyword">let</span> angle = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">let</span> alternate = <span class="hljs-literal">false</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alternateAngle</span>(<span class="hljs-params">currentState</span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(currentState)&#123;<br>            currentState = <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            currentState = <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> currentState;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">calculate</span>(<span class="hljs-params">currentR, currentA</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.r = currentR;<br>        <span class="hljs-keyword">if</span>(alternate)&#123;<br>            angle -= <span class="hljs-number">0.01</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            angle += <span class="hljs-number">0.01</span>;<br>        &#125;<br>        <span class="hljs-built_in">this</span>.x = r * <span class="hljs-built_in">Math</span>.cos(angle);<br>        <span class="hljs-built_in">this</span>.y = r * <span class="hljs-built_in">Math</span>.sin(angle);<br>        <span class="hljs-built_in">this</span>.x2 = r * <span class="hljs-built_in">this</span>.x + <span class="hljs-built_in">this</span>.x;<br>        <span class="hljs-built_in">this</span>.y2 = r * <span class="hljs-built_in">this</span>.y + <span class="hljs-built_in">this</span>.y;<br>        line(<span class="hljs-built_in">this</span>.x, <span class="hljs-built_in">this</span>.y, <span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2);<br>        ellipse(<span class="hljs-built_in">this</span>.x2, <span class="hljs-built_in">this</span>.y2, <span class="hljs-number">20</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> pend = <span class="hljs-keyword">new</span> Line(r, angle);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>&#123;<br>    createCanvas(windowWidth, windowHeight);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>&#123;<br>    translate(width / <span class="hljs-number">2</span>, height / <span class="hljs-number">2</span>);<br>    background(<span class="hljs-number">51</span>);<br>    strokeWeight(<span class="hljs-number">5</span>);<br>    pend.calculate(r, angle);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">parseInt</span>(pend.y2) == <span class="hljs-number">0</span> || <span class="hljs-built_in">parseInt</span>(pend.y2) == -<span class="hljs-number">7</span>)&#123;<br>        alternate = pend.alternateAngle(alternate)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>The final result is a ball on a string rotating with a similar motion to a pendulum.</p>
+<p>Similar to something like this</p>
+<p><a href="https://callmetan7.github.io/simple-pendulum">pend</a></p>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://img.zcool.cn/community/0197465d186677a8012051cd2e3861.jpg@1280w_1l_2o_100sh.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/rose-math/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Rose Mathematics</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://pm1.narvii.com/6115/9199b66a943953fecaf3994f60de7f3c382e7193_hq.jpg" class="soft-size--round soft-style--box" alt="Tanuj Padaliya">
+    
+    
+      <h2>Tanuj Padaliya</h2>
+    
+    
+      <p>13 years old</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>5</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        3
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>Hello</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/3js/" style="font-size: 10px;" class="tags-cloud-0">3js</a> <a href="/tags/maths/" style="font-size: 10px;" class="tags-cloud-0">maths</a> <a href="/tags/neovim/" style="font-size: 10px;" class="tags-cloud-0">neovim</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/callmetan7/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2022 <a href="/" target="_blank">Tanuj Padaliya</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+    <script async="" src="../../../../js/busuanzi.pure.mini.js"></script>
+    Site views: <span style="color: seagreen; --darkreader-inline-color:#89f7ba;" data-darkreader-inline-color=""><span id="busuanzi_value_site_uv">124</span></span> times
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 Light Mode</a>
+      <a href="javascript:;" id="theme-dark">🌛 Dark Mode</a>
+      <a href="javascript:;" id="theme-auto">🤖️ Auto</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
