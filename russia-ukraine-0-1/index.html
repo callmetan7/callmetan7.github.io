@@ -24,7 +24,7 @@
 
   
 
-  <title>Three.js Guide | Tanuj&#39;s Blog</title>
+  <title>russia-ukraine-0.1 | Tanuj&#39;s Blog</title>
 
   
 
@@ -52,7 +52,7 @@
   
   <div
     class="post-image"
-    style="background-image: url(https://i.pinimg.com/474x/1c/4f/ac/1c4facad627b098885aec6266b8c6c0e.jpg) "
+    style="background-image: url(https://images7.alphacoders.com/303/thumb-1920-303042.png) "
   ></div>
    <!-- navbar -->
 <nav class="navbar">
@@ -88,17 +88,15 @@
   <div class="header-content">
     <div class="post-text layout-block">
       <div class="layout-margin">
-        <h1 class="title-wrap">Three.js Guide</h1>
+        <h1 class="title-wrap">russia-ukraine-0.1</h1>
         <h2 class="title-sub-wrap">
           <strong>Tanuj Padaliya</strong>
           <span> | </span>
-          <time  class="article-date" datetime="2021-12-28T07:02:45.000Z" itemprop="datePublished">2021-12-28</time>
+          <time  class="article-date" datetime="2022-02-25T14:15:18.000Z" itemprop="datePublished">2022-02-25</time>
         </h2>
         <ul class="wrap-list dark">
   
 </ul> <ul class="wrap-list dark">
-  
-    <li><a href="/tags/3js/">🏷️ 3js</a></li>
   
 </ul>
       </div>
@@ -119,87 +117,23 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h2 id="What-is-3js"><a href="#What-is-3js" class="headerlink" title="What is 3js"></a>What is 3js</h2><p>three.js is a JavaScript library used to build 3D websites. It uses the WebGL Renderer to render graphics on to the screen. With three.js you can animate, draw, and create 3D web pages without much trouble. It was made by Ricardo Cabello and was hosted on Github under the MIT License in 2010. Up until then it has been the most prefered and easiest way to build 3D websites.<br>In this course you will learn the basics of three.js. You will learn how to set it up, how to write boilerplate code for it to work and how to draw, animate and load textures on to the screen.</p>
-<hr>
-<h2 id="How-to-setup-a-three-js-project"><a href="#How-to-setup-a-three-js-project" class="headerlink" title="How to setup a three.js project"></a>How to setup a three.js project</h2><ol>
-<li><p>Open up a terminal and enter the following commands</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm init vite<br></code></pre></td></tr></table></figure></li>
-<li><p>Enter your project name</p>
-</li>
-<li><p>From the drop down menu click vannila</p>
-</li>
-<li><p>Click Vannila and hit enter<br>This will create our a package.json file for us and everything else so we don’t have to.</p>
-</li>
-<li><p>Open the project in your text editor and open the terminal</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install three<br></code></pre></td></tr></table></figure></li>
-<li><p>Go to the node_modules/build/three.min.js or three.js and move it to your js folder</p>
-</li>
-<li><p>Add a script src tab into your index.html that links to your three.js file</p>
-</li>
-</ol>
-<hr>
-<p><img src="https://callmetan7.github.io/3js-blog-tutorial/img/threejs-structure.svg" alt="Three JS Structure"><br>three.js is composed of a scene, camera, and a renderer. The first thing we initialise is the scene, camera, and the renderer. We can initilise these by typing in the code shown below</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> scene = <span class="hljs-keyword">new</span> THREE.Scene();<br><span class="hljs-keyword">const</span> camera = <span class="hljs-keyword">new</span> THREE.PerspectiveCamera(<br><span class="hljs-number">75</span>,<br><span class="hljs-built_in">window</span>.innerWidth / <span class="hljs-built_in">window</span>.innerHeight,<br><span class="hljs-number">0.1</span>,<br><span class="hljs-number">1000</span><br>);<br>                <br><span class="hljs-keyword">const</span> renderer = <span class="hljs-keyword">new</span> THREE.WebGLRender;<br>renderer.setSize(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight);<br><span class="hljs-built_in">document</span>.body.appendChild(renderer.domElement); <br></code></pre></td></tr></table></figure>
-
-<p>After creating the camera, scene, and the WebGL Renderer. We can draw our first object to the screen<br>In three.js to create a object you need to define 3 variables. The geometry of the object, the material, and the object itself. The geometry is the shape of the object and the material is the texture of the object. If your a more visual learner than here is a diagram to help demonsrate that<br><img src="https://callmetan7.github.io/3js-blog-tutorial/img/threejs-1cube-no-light-scene.svg" alt="3js Object Structure"><br>As you can see the mesh or the object is derived from the geometry and the material.<br>Enough talk lets do something with three.js now!</p>
-<ol>
-<li>First lets create the geometry of the object<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cubeGeo = <span class="hljs-keyword">new</span> THREE.BoxGeometry();<br></code></pre></td></tr></table></figure></li>
-<li>After this we need to create the material or the texture of the object. We can do this by simply using the MeshBasicMaterial from three.js<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cubeMat = <span class="hljs-keyword">new</span> THREE.MeshBasicMaterial(&#123;<span class="hljs-attr">color</span>: <span class="hljs-number">0x00ff00</span>&#125;);<br></code></pre></td></tr></table></figure></li>
-<li>And now we can make the object itself!<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cube = <span class="hljs-keyword">new</span> THREE.Mesh(cubeGeo, cubeMat);<br></code></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<p>After all this we just need to add the cube to the screen and set the position of the camera!</p>
-<pre><code class="javascript">scene.add(cube)
-camera.position.z = 5;
-</code></pre>
-<p>The final code should look like this!</p>
-<pre><code class="javascript">const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-const cubeGeo = new THREE.BoxGeometry();
-const cubeMat = new THREE.MeshBasicMaterial(&#123;color: 0x00ff00&#125;);
-const cube = new THREE.Mesh(cubeGeo, cubeMat);
-scene.add(cube);
-camera.position.z = 5;
-renderer.render(scene, camera);
-</code></pre>
-<p>And your final output should look something like this<br><img src="https://callmetan7.github.io/3js-blog-tutorial/img/finalOutput.png" alt="Final Output"></p>
-
+        
       </section>
 
       
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/setting-up-nvim-with-wsl/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">setting-up-nvim-with-wsl</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
+      <div class="card-cover" background-image-lazy data-img="https://i.pinimg.com/474x/1c/4f/ac/1c4facad627b098885aec6266b8c6c0e.jpg"></div>
+    
     <div class="card-text">
       
-        <a href="/terminal-setup/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Terminal Configuration with ZSH, WSl and p10k</h2>
+        <a href="/making-simple-pendulum/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Making a Simple Pendulum</h2>
         </a>
       
       <div class="card-text--row">Older</div>
