@@ -8,7 +8,7 @@ user:
   last_name: Padaliya
   domain: https://callmetan7.github.io
   email: 
-  avatar: /img/avatar2.jpg
+  avatar: https://steamavatar.io/img/1477351908MRp35.jpg
   describe: This is Tanujs Portfolio
   ruleText: 暂不接受个人博客以外的友链申请，确保您的网站内容积极向上，文章至少30篇，原创70%以上，部署HTTPS。
 
@@ -102,7 +102,7 @@ banner:
   use_cover: false
   default:
     type: img
-    bgurl: /img/banner2.jpg
+    bgurl: https://wallpapercave.com/wp/wp10881896.jpg
     bannerText: Hello, how do you do? 
     position: top
     fit: cover
