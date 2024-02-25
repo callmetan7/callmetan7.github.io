@@ -9,7 +9,7 @@ user:
   domain: https://callmetan7.github.io
   email: 
   avatar: https://steamavatar.io/img/1477351908MRp35.jpg
-  describe: This is Tanujs Portfolio
+  describe: This is Tanuj's Portfolio
   ruleText: 暂不接受个人博客以外的友链申请，确保您的网站内容积极向上，文章至少30篇，原创70%以上，部署HTTPS。
 
 # Configure the icon information of the site
@@ -107,7 +107,7 @@ banner:
     position: top
     fit: cover
   index:
-    bannerTitle: Welcome to Tanujs <br> Portfolio!
+    bannerTitle: Welcome to Tanuj's <br> Portfolio!
     bannerText: Hello, how do you do my friend?
     videoUrl: 
   archive:
