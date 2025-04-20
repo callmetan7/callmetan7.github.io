@@ -60,7 +60,10 @@ exclude: null
 ignore: null
 theme: particlex 
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/callmetan7/callmetan7.github.io
+  # example, https://github.com/hexojs/hexojs.github.io
+  branch: gh-pages
 archive_generator:
     enabled: true
     per_page: 0
